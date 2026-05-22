@@ -14,6 +14,11 @@ Ce projet inclut un exemple minimal de code Node.js pour envoyer un message text
     - Envoyez l'URL générée copiée à barreaud@enssat.fr
 - Le token du bot et l'ID du canal où envoyer le message.
 
+##### URL
+- bot1 https://discord.com/oauth2/authorize?client_id=1507027887373684797&permissions=67584&integration_type=0&scope=bot
+- bot2 https://discord.com/oauth2/authorize?client_id=1507030169955729602&permissions=67584&integration_type=0&scope=bot
+- bot3 https://discord.com/oauth2/authorize?client_id=1507031215708962868&permissions=67584&integration_type=0&scope=bot
+
 #### Installation
 1. Installez les dépendances :
    ```
