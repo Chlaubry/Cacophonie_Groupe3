@@ -12,7 +12,7 @@ Ce projet inclut un exemple minimal de code Node.js pour envoyer un message text
     - Choisir les permissions "Send message" et "Read Message History" dans "BOT PERMISSIONS"
     - Cliquer sur Copy dans "GENERATED URL"
     - Envoyez l'URL générée copiée à barreaud@enssat.fr
-- Le token du bot et l'ID du canal où envoyer le message.
+- Le token du bot et l'ID du canal où envoyer le message. (1505842191740964865)
 
 ##### URL
 - bot1 https://discord.com/oauth2/authorize?client_id=1507027887373684797&permissions=67584&integration_type=0&scope=bot

@@ -1,12 +1,13 @@
+require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 
 // Remplacez par votre token de bot Discord
-//const TOKEN = 'YOUR_BOT_TOKEN_HERE';
-const TOKEN = 'MTUwMTUyODUyNzc0NzY3ODI3OA.GmaY4q.Nyr-D2F9N3gTO3rgP8p2ErQuGX9Nnc7tHHJON4';
+const TOKEN = process.env.BOT_TOKEN1;
+//const TOKEN = 'MTUwMTUyODUyNzc0NzY3ODI3OA.GmaY4q.Nyr-D2F9N3gTO3rgP8p2ErQuGX9Nnc7tHHJON4';
 
 // Remplacez par l'ID de votre canal Discord
-//const CHANNEL_ID = 'YOUR_CHANNEL_ID_HERE';
-const CHANNEL_ID = '1501529121241567252';
+const CHANNEL_ID = process.env.CHANNEL_ID;
+//const CHANNEL_ID = '1501529121241567252';
 
 const client = new Client({
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
