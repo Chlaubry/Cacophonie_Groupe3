@@ -1,13 +1,27 @@
 const express = require('express');
-const app = express();
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
+const app = express();
 app.use(express.json());
 
-// import routes
-const botsRoutes = require('./routes/bots_routes');
+const swaggerSpec = swaggerJsdoc({
+    definition: {
+        openapi: "3.0.0",
+        info: {
+            title: "Cacophonie API",
+            description: "API de gestion des bots"
+        }
+    },
+    apis: ["./api/routes/*.js"]
+});
 
-// branchement
-app.use('/bots', botsRoutes);
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+console.log(swaggerSpec.paths);
+
+const botRoutes = require('./routes/botRoutes');
+app.use('/bots', botRoutes);
 
 module.exports = app;
-
