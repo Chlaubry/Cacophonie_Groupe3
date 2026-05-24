@@ -4,7 +4,8 @@
   "description": "Un bot Discord minimal pour envoyer des messages",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "startTest": "node index_test_a.js"
   },
   "dependencies": {
     "discord.js": "^14.14.1",
