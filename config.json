@@ -1,0 +1,46 @@
+{
+  "app": {
+    "name": "Cacophonie",
+    "port": 3000
+  },
+
+  "discord": {
+    "channels": [
+      "1505842191740964865"
+    ],
+    "intents": {
+      "guilds": true,
+      "guildMessages": true,
+      "messageContent": true
+    }
+  },
+
+  "workers": {
+    "maxWorkers": 3,
+    "workerTimeout": 5000,
+    "restartOnCrash": true
+  },
+
+  "bots": {
+    "defaultBrain": "rivescript",
+    "defaultMouth": "discord",
+    "autoStart": true
+  },
+
+  "brains": {
+    "rivescript": {
+      "enabled": true,
+      "path": "./brains/rivescript"
+    }
+  },
+
+  "mouths": {
+    "discord": {
+      "enabled": true
+    },
+    "web": {
+      "enabled": false,
+      "port": 8080
+    }
+  }
+}
