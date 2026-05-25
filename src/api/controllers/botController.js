@@ -1,22 +1,21 @@
-const BotManager = require('../../services/BotManager');
-const WorkerManager = require('../../services/WorkerManager');
-
-const botManager = new BotManager();
-const workerManager = new WorkerManager();
 
 function createBot(req, res) {
-    const { name, brain, mouth } = req.body;
+    const { name, brain } = req.body;
+
+    const botManager = req.app.locals.botManager;
 
     const bot = botManager.createBot({
         name,
-        brain,
-        mouth
+        brain
     });
 
     res.status(201).json(bot);
 }
 
 function deleteBot(req, res) {
+
+    const botManager = req.app.locals.botManager;
+
     const ok = botManager.deleteBot(req.params.id);
 
     if (!ok) {
@@ -27,6 +26,10 @@ function deleteBot(req, res) {
 }
 
 function startBot(req, res) {
+
+    const botManager = req.app.locals.botManager;
+    const workerManager = req.app.locals.workerManager;
+
     const bot = botManager.startBot(req.params.id, workerManager);
 
     if (!bot) {
@@ -37,7 +40,11 @@ function startBot(req, res) {
 }
 
 function stopBot(req, res) {
-    const bot = botManager.stopBot(req.params.id);
+
+    const botManager = req.app.locals.botManager;
+    const workerManager = req.app.locals.workerManager;
+
+    const bot = botManager.stopBot(req.params.id, workerManager);
 
     if (!bot) {
         return res.status(404).json({ error: "Bot introuvable" });
@@ -47,7 +54,14 @@ function stopBot(req, res) {
 }
 
 function updateBrain(req, res) {
+
     const { brain } = req.body;
+
+    const botManager = req.app.locals.botManager;
+    const workerManager = req.app.locals.workerManager;
+
+    const existing = botManager.getBot(req.params.id);
+    const wasRunning = !!existing && existing.status === "running";
 
     const bot = botManager.updateBrain(req.params.id, brain);
 
@@ -55,13 +69,47 @@ function updateBrain(req, res) {
         return res.status(404).json({ error: "Bot introuvable" });
     }
 
+    if (wasRunning) {
+        botManager.startBot(bot.id, workerManager);
+    }
+
     res.json(bot);
 }
+
+
+function getBot(req, res) {
+
+    const { id } = req.params;
+
+    const botManager = req.app.locals.botManager;
+
+    const bot = botManager.getBot(id);
+
+    if (!bot) {
+        return res.status(404).json({
+            error: "Bot introuvable"
+        });
+    }
+
+    res.json(bot);
+}
+
+function listBots(req, res) {
+
+    const botManager = req.app.locals.botManager;
+
+    const bots = botManager.listBots();
+
+    res.json(bots);
+}
+
 
 module.exports = {
     createBot,
     deleteBot,
     startBot,
     stopBot,
-    updateBrain
+    updateBrain,
+    getBot,
+    listBots
 };

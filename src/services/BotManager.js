@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { v4: uuidv4 } = require('uuid');
 
 class BotManager {
@@ -6,21 +7,30 @@ class BotManager {
         this.bots = new Map();
     }
 
-    createBot({ name, brain = "rivescript", mouth = "discord" }) {
+    createBot({ name, brain, channelId }) {
         const id = uuidv4();
+
+        const availableMouth = this.getAvailableMouth();
 
         const bot = {
             id,
             name,
-            brain,
-            mouth,
+            brain: brain || "english",
+            mouth: availableMouth,
+            channelId: channelId || process.env.CHANNEL_ID,
             status: "stopped",
-            worker: null,
-            createdAt: new Date()
         };
 
         this.bots.set(id, bot);
         return bot;
+    }   
+
+    getAvailableMouth() {
+        const mouths = ["2526_INFO2_Caco_group3_bot1", "2526_INFO2_Caco_group3_bot2", "2526_INFO2_Caco_group1_bot3"];
+
+        const index = this.bots.size % mouths.length;
+
+        return mouths[index];
     }
 
     getBot(id) {
@@ -36,6 +46,17 @@ class BotManager {
         if (!bot) return null;
 
         bot.brain = brain;
+
+        if (bot.worker) {
+            bot.worker.terminate();
+            bot.worker = null;
+        }
+
+        // Si le bot tournait, il n'a plus de worker actif.
+        if (bot.status === "running") {
+            bot.status = "stopped";
+        }
+
         return bot;
     }
 
@@ -44,6 +65,16 @@ class BotManager {
         if (!bot) return null;
 
         bot.mouth = mouth;
+
+        if (bot.worker) {
+            bot.worker.terminate();
+            bot.worker = null;
+        }
+
+        if (bot.status === "running") {
+            bot.status = "stopped";
+        }
+
         return bot;
     }
 
@@ -51,7 +82,7 @@ class BotManager {
         const bot = this.bots.get(id);
         if (!bot) return null;
 
-        if (bot.status === "running") return bot;
+        if (bot.status === "running" && bot.worker) return bot;
 
         bot.status = "running";
 
@@ -60,11 +91,16 @@ class BotManager {
 
         return bot;
     }
-    stopBot(id) {
+    
+    stopBot(id, workerManager) {
         const bot = this.bots.get(id);
         if (!bot) return null;
 
-        workerManager.stop(id);
+        if (workerManager) {
+            workerManager.stop(id);
+        } else if (bot.worker) {
+            bot.worker.terminate();
+        }
         bot.worker = null;
         bot.status = "stopped";
 
