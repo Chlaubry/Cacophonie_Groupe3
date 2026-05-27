@@ -1,24 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-/**
- * LogManager — écrit chaque échange bot/user dans un fichier JSON dédié.
- * Chemin : logs/bot_<botId>.json  (créé automatiquement s'il n'existe pas)
- *
- * Format d'une entrée :
- * {
- *   "timestamp"   : "2026-05-27T14:32:11.045Z",   // date exacte ISO 8601
- *   "botId"       : "uuid-du-bot",
- *   "mouthId"     : "2526_INFO2_Caco_group3_bot1", // identifiant Discord bot
- *   "userId"      : "123456789012345678",           // snowflake Discord de l'utilisateur
- *   "userMessage" : "hello",                        // message envoyé par l'utilisateur
- *   "botResponse" : "Hi there! How are you?"        // réponse du bot
- * }
- */
+
 class LogManager {
     /**
-     * @param {string} [logDir] - répertoire de stockage des logs.
-     *        Par défaut : <racine du projet>/logs
+     * @param {string} [logDir] - 
+     *        
      */
     constructor(logDir = path.resolve(__dirname, '../../logs')) {
         this.logDir = logDir;
@@ -121,7 +108,6 @@ class LogManager {
         fs.writeFileSync(filePath, JSON.stringify(remaining, null, 2), 'utf-8');
     }
 
-    // --- Utilitaire privé ---
 
     _filePath(botId) {
         return path.join(this.logDir, `bot_${botId}.json`);
