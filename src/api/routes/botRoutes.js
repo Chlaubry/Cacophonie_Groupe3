@@ -194,6 +194,105 @@
  *                         example: running
  */
 
+
+/**
+ * @openapi
+ * /bots/{id}/getAllConv:
+ *   get:
+ *     tags: [Bots]
+ *     summary: Lister toutes les conversations du bot 
+ *     description: Retourne la liste de toutes les conversations enregistrées en mémoire du bot donné.
+ *     responses:
+ *       200:
+ *         description: Liste des conv
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 count:
+ *                   type: integer
+ *                   example: 2
+ *                 conversations:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       idBot:
+ *                         type: string
+ *                       mouthBot:
+ *                         type: string
+ */
+
+/**
+ * @openapi
+ * /bots/{idBot}/{idUser}/getAllConv:
+ *   get:
+ *     tags: [Bots]
+ *     summary: Lister toutes les conversations du bot avec un utilisateur choisi.
+ *     description: Retourne la liste de toutes les conversations enregistrées en mémoire du bot donné.
+ *     responses:
+ *       200:
+ *         description: Liste des conv
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 count:
+ *                   type: integer
+ *                   example: 2
+ *                 conversations:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       idBot:
+ *                         type: string
+ *                       mouthBot:
+ *                         type: string
+ */
+
+
+/**
+ * @openapi
+ * /bots/{id}/subAllConv:
+ *   delete:
+ *     tags: [Bots]
+ *     summary: Supprimer toutes les conversations d'un bot
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Bot supprimé
+ *       404:
+ *         description: Bot introuvable
+ */
+
+
+/**
+ * @openapi
+ * /bots/{idBot}/{idUser}/subAllConv:
+ *   delete:
+ *     tags: [Bots]
+ *     summary: Supprimer toutes les conversations d'un bot pour un utilisateur donné.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Bot supprimé
+ *       404:
+ *         description: Bot introuvable
+ */
+
 const express = require('express');
 const router = express.Router();
 

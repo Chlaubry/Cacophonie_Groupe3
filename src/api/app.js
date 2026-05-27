@@ -24,4 +24,7 @@ console.log(swaggerSpec.paths);
 const botRoutes = require('./routes/botRoutes');
 app.use('/bots', botRoutes);
 
+const userRoutes = require('./routes/userRoutes');
+app.use('/users', userRoutes);
+
 module.exports = app;
