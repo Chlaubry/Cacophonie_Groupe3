@@ -9,7 +9,7 @@ let isReady = false;
 const pending = [];
 
 function loadBrain(brainName) {
-    const brainDir = path.resolve(__dirname, '../../brains/rivescript');
+    const brainDir = path.resolve(__dirname, '../../bootstrapCodeForRivescriptChatBot/brain');
     const beginPath = path.join(brainDir, 'begin.rive');
     const brainPath = path.join(brainDir, `${brainName}.rive`);
 
@@ -53,6 +53,11 @@ parentPort.on('message', async (msg) => {
             ? String(msg.user)
             : "user";
 
+    const userId =
+        typeof msg === 'object' && msg?.userId
+            ? String(msg.userId)
+            : "unknown";
+
     if (!text || !text.trim()) return;
 
     text = text
@@ -69,6 +74,8 @@ parentPort.on('message', async (msg) => {
 
     parentPort.postMessage({
         botId: workerData.id,
+        userId:      username,    
+        userMessage: text,        
         response
     });
 });

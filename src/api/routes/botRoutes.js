@@ -306,4 +306,10 @@ router.put('/:id/brain', botController.updateBrain);
 router.get('/:id/get', botController.getBot);
 router.get('/list', botController.listBots);
 
+
+//route pour les logs
+router.get('/:idBot/:idUser/getAllConv',    botController.getAllConvByUser);
+router.delete('/:idBot/:idUser/subAllConv', botController.deleteAllConvByUser);
+router.get('/:id/getAllConv',              botController.getAllConv);
+router.delete('/:id/subAllConv',           botController.deleteAllConv);
 module.exports = router;
