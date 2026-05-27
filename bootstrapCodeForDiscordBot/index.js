@@ -2,8 +2,9 @@ require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 
 // Remplacez par votre token de bot Discord
-const TOKEN = process.env.BOT_TOKEN1;
+const TOKEN = process.env.BOT_TOKEN3;
 //const TOKEN = 'MTUwMTUyODUyNzc0NzY3ODI3OA.GmaY4q.Nyr-D2F9N3gTO3rgP8p2ErQuGX9Nnc7tHHJON4';
+console.log("TOKEN:", TOKEN);
 
 // Remplacez par l'ID de votre canal Discord
 const CHANNEL_ID = process.env.CHANNEL_ID;
