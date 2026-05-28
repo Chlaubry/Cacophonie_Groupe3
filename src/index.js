@@ -33,7 +33,8 @@ app.listen(3000, () => {
 mouthManager.startAll({
     "2526_INFO2_Caco_group3_bot1": process.env.BOT_TOKEN1,
     "2526_INFO2_Caco_group3_bot2": process.env.BOT_TOKEN2,
-    "2526_INFO2_Caco_group1_bot3": process.env.BOT_TOKEN3
+    "2526_INFO2_Caco_group3_bot3": process.env.BOT_TOKEN3
+
 }, (mouthId, message) => {
 
     console.log("\n=== MESSAGE DISCORD REÇU ===");
@@ -43,11 +44,10 @@ mouthManager.startAll({
     console.log("content:", message.content);
     console.log("channel:", message.channel.id);
 
-    // 1. Filtrage bots
     const candidates = botManager.listBots()
         .filter(b =>
-            b.mouth     === mouthId &&
-            b.status    === "running" &&
+            b.mouth === mouthId &&
+            b.status === "running" &&
             b.channelId === message.channel.id
         );
 
