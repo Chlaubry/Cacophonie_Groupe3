@@ -18,7 +18,7 @@ class BotManager {
             brain: brain || "english",
             mouth: availableMouth,
             channelId: channelId || process.env.CHANNEL_ID,
-            status: "stopped",
+            status: false
         };
 
         this.bots.set(id, bot);
@@ -53,8 +53,8 @@ class BotManager {
         }
 
         // Si le bot tournait, il n'a plus de worker actif.
-        if (bot.status === "running") {
-            bot.status = "stopped";
+        if (bot.status) {
+            bot.status = false;
         }
 
         return bot;
@@ -71,10 +71,28 @@ class BotManager {
             bot.worker = null;
         }
 
-        if (bot.status === "running") {
-            bot.status = "stopped";
+        if (bot.status) {
+            bot.status = false;
         }
 
+        return bot;
+    }
+
+    updateBot(id, workerManager, name, status) {
+        const bot = this.bots.get(id);
+
+        console.log("Updating bot", { id, name, status });
+
+        if (status && status !== bot.status) {
+            if (status) {
+                this.startBot(id, workerManager);
+            } else {
+                this.stopBot(id, workerManager);
+            }
+        }
+        if (name) {
+            bot.name = name;
+        }
         return bot;
     }
 
@@ -82,9 +100,9 @@ class BotManager {
         const bot = this.bots.get(id);
         if (!bot) return null;
 
-        if (bot.status === "running" && bot.worker) return bot;
+        if (bot.status && bot.worker) return bot;
 
-        bot.status = "running";
+        bot.status = true;
 
         // création worker
         bot.worker = workerManager.start(bot);
@@ -102,7 +120,7 @@ class BotManager {
             bot.worker.terminate();
         }
         bot.worker = null;
-        bot.status = "stopped";
+        bot.status = false;
 
         return bot;
     }
