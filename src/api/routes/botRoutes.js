@@ -54,10 +54,10 @@
 
 /**
  * @openapi
- * /bots/{id}/start:
- *   post:
+ * /bots/{id}:
+ *   patch:
  *     tags: [Bots]
- *     summary: Démarrer un bot
+ *     summary: Changer un attribut d'un bot
  *     parameters:
  *       - in: path
  *         name: id
@@ -71,24 +71,6 @@
  *         description: Bot introuvable
  */
 
-/**
- * @openapi
- * /bots/{id}/stop:
- *   post:
- *     tags: [Bots]
- *     summary: Arrêter un bot
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: Bot arrêté
- *       404:
- *         description: Bot introuvable
- */
 
 /**
  * @openapi
@@ -123,7 +105,7 @@
  */
 /**
  * @openapi
- * /bots/{id}/get:
+ * /bots/{id}:
  *   get:
  *     tags: [Bots]
  *     summary: Récupérer un bot par ID
@@ -160,7 +142,7 @@
 
 /**
  * @openapi
- * /bots/list:
+ * /bots:
  *   get:
  *     tags: [Bots]
  *     summary: Lister tous les bots
@@ -197,15 +179,27 @@
 
 /**
  * @openapi
- * /bots/{id}/getAllConv:
+ * /bots/{id}/conv:
  *   get:
  *     tags: [Bots]
- *     summary: Lister toutes les conversations du bot 
+ *     summary: Lister toutes les conversations du bot en fonction si on le souhaite de l'id de l'utilisateur, de la date, etc.
  *     description: Retourne la liste de toutes les conversations enregistrées en mémoire du bot donné.
  *     responses:
  *       200:
  *         description: Liste des conv
- *         content:
+ *         parameters:
+ *              - in: query
+ *                name: user 
+ *                schema:
+ *                  type: string
+ *              description: Le pseudo de l'utilisateur
+ *              - in: query
+ *                name: datae 
+ *                schema:
+ *                  type: string
+ *              description: La date 
+ *        
+ *          content:
  *           application/json:
  *             schema:
  *               type: object
@@ -226,37 +220,7 @@
 
 /**
  * @openapi
- * /bots/{idBot}/{idUser}/getAllConv:
- *   get:
- *     tags: [Bots]
- *     summary: Lister toutes les conversations du bot avec un utilisateur choisi.
- *     description: Retourne la liste de toutes les conversations enregistrées en mémoire du bot donné.
- *     responses:
- *       200:
- *         description: Liste des conv
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 count:
- *                   type: integer
- *                   example: 2
- *                 conversations:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       idBot:
- *                         type: string
- *                       mouthBot:
- *                         type: string
- */
-
-
-/**
- * @openapi
- * /bots/{id}/subAllConv:
+ * /bots/{id}/conv:
  *   delete:
  *     tags: [Bots]
  *     summary: Supprimer toutes les conversations d'un bot
@@ -276,7 +240,7 @@
 
 /**
  * @openapi
- * /bots/{idBot}/{idUser}/subAllConv:
+ * /bots/{idBot}/{idUser}/conv:
  *   delete:
  *     tags: [Bots]
  *     summary: Supprimer toutes les conversations d'un bot pour un utilisateur donné.
