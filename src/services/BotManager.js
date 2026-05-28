@@ -26,7 +26,7 @@ class BotManager {
     }   
 
     getAvailableMouth() {
-        const mouths = ["2526_INFO2_Caco_group3_bot1", "2526_INFO2_Caco_group3_bot2", "2526_INFO2_Caco_group1_bot3"];
+        const mouths = ["2526_INFO2_Caco_group3_bot1", "2526_INFO2_Caco_group3_bot2", "2526_INFO2_Caco_group3_bot3"];
 
         const index = this.bots.size % mouths.length;
 
