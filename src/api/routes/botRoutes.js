@@ -268,6 +268,6 @@ router.post('/:id/start', botController.startBot);
 router.post('/:id/stop', botController.stopBot);
 router.put('/:id/brain', botController.updateBrain);
 router.get('/:id/get', botController.getBot);
-router.get('/list', botController.listBots);
+router.get('/', botController.listBots);
 
 module.exports = router;
