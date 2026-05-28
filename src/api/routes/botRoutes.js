@@ -1,3 +1,8 @@
+const express = require('express');
+const router = express.Router();
+
+const botController = require('../controllers/botController');
+
 /**
  * @openapi
  * tags:
@@ -32,6 +37,7 @@
  *       201:
  *         description: Bot créé avec succès
  */
+router.post('/', botController.createBot);
 
 /**
  * @openapi
@@ -51,6 +57,7 @@
  *       404:
  *         description: Bot introuvable
  */
+router.delete('/:id', botController.deleteBot);
 
 /**
  * @openapi
@@ -64,13 +71,26 @@
  *         required: true
  *         schema:
  *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: "Bot humour"
+ *               status:
+ *                 type: boolean
+ *                 example: true
  *     responses:
  *       200:
- *         description: Bot démarré
+ *         description: Bot modifié
  *       404:
  *         description: Bot introuvable
  */
-
+router.patch('/:id', botController.updateBot);
 
 /**
  * @openapi
@@ -103,6 +123,8 @@
  *       404:
  *         description: Bot introuvable
  */
+router.put('/:id/brain', botController.updateBrain);
+
 /**
  * @openapi
  * /bots/{id}:
@@ -139,6 +161,7 @@
  *       404:
  *         description: Bot introuvable
  */
+router.get('/:id/get', botController.getBot);
 
 /**
  * @openapi
@@ -175,7 +198,7 @@
  *                         type: string
  *                         example: running
  */
-
+router.get('/', botController.listBots);
 
 /**
  * @openapi
@@ -256,18 +279,5 @@
  *       404:
  *         description: Bot introuvable
  */
-
-const express = require('express');
-const router = express.Router();
-
-const botController = require('../controllers/botController');
-
-router.post('/', botController.createBot);
-router.delete('/:id', botController.deleteBot);
-router.post('/:id/start', botController.startBot);
-router.post('/:id/stop', botController.stopBot);
-router.put('/:id/brain', botController.updateBrain);
-router.get('/:id/get', botController.getBot);
-router.get('/', botController.listBots);
 
 module.exports = router;
