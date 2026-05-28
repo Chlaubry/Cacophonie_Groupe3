@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
@@ -13,7 +14,7 @@ const swaggerSpec = swaggerJsdoc({
             description: "API de gestion des bots"
         }
     },
-    apis: ["./api/routes/*.js"]
+    apis: [path.join(__dirname, 'routes/*.js')]
 });
 
 
