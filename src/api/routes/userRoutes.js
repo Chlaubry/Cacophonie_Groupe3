@@ -14,7 +14,7 @@
  *     description: Retourne la liste de toutes les conversations enregistrées en mémoire d'un utilisateur donné.
  *     responses:
  *       200:
- *         description: Liste des conv
+ *         description: Liste des conversations de l'utilisateur donné.
  *         content:
  *           application/json:
  *             schema:

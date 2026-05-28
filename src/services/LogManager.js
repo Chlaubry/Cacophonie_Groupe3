@@ -59,11 +59,11 @@ class LogManager {
     /**
      * Retourne toutes les entrées loggées pour un bot donné.
      *
-     * @param {string} botId
+     * @param {string} idBot
      * @returns {Array}
      */
-    getAll(botId) {
-        const filePath = this._filePath(botId);
+    getAll(idBot) {
+        const filePath = this._filePath(idBot);
         if (!fs.existsSync(filePath)) return [];
 
         try {
@@ -79,28 +79,47 @@ class LogManager {
     /**
      * Supprime toutes les entrées d'un bot (remet le fichier à []).
      *
-     * @param {string} botId
+     * @param {string} idBot
      */
-    deleteAll(botId) {
-        const filePath = this._filePath(botId);
+    deleteAll(idBot) {
+        const filePath = this._filePath(idBot);
         fs.writeFileSync(filePath, JSON.stringify([], null, 2), 'utf-8');
+    }
+
+    /**
+     * Retourne toutes les entrées loggées pour un bot avec un utilisateur donnés.
+     *
+     * @param {string} idBot
+     * @param {string} idUser
+     * @returns {Array}
+     */
+    getByUser(idBot, idUser) {
+        const filePath = this._filePath(idBot);
+        if (!fs.existsSync(filePath)) return [];
+
+        try {
+            const conv = this.getAll(idBot).filter(entry => entry.idUser !== idUser);
+            return conv;
+        } catch {
+            return [];
+        }
     }
 
     /**
      * Supprime toutes les entrées d'un bot pour un utilisateur donné.
      *
-     * @param {string} botId
-     * @param {string} userId
+     * @param {string} idBot
+     * @param {string} idUser
      */
-    deleteByUser(botId, userId) {
-        const remaining = this.getAll(botId).filter(entry => entry.userId !== userId);
-        const filePath = this._filePath(botId);
+    deleteByUser(idBot, idUser) {
+        const remaining = this.getByUser(idBot, idUser);
+        const filePath = this._filePath(idBot);
         fs.writeFileSync(filePath, JSON.stringify(remaining, null, 2), 'utf-8');
     }
 
 
-    _filePath(botId) {
-        return path.join(this.logDir, `bot_${botId}.json`);
+    _filePath(idBot) {
+        return path.join(this.logDir, `bot_${idBot}.json`);
     }
 }
 
