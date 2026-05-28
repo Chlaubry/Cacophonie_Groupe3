@@ -43,7 +43,7 @@ class WorkerManager {
             console.log("message:",  data.userMessage);
             console.log("response:", data.response);
 
-                        // Logging JSON de l'échange
+            // Logging JSON de l'échange
             if (this.logManager) {
                 this.logManager.log({
                     botId:       data.botId,

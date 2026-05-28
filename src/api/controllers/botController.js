@@ -105,7 +105,7 @@ function listBots(req, res) {
 
 function getAllConv(req, res) {
   const { id } = req.params;
-  const logManager = req.app.locals.logManager;   // ← utiliser logManager
+  const logManager = req.app.locals.logManager;
   const logs = logManager.getAll(id);
   res.json({ count: logs.length, conversations: logs });
 }
