@@ -51,7 +51,7 @@ function updateBrain(req, res) {
     const workerManager = req.app.locals.workerManager;
 
     const existing = botManager.getBot(req.params.id);
-    const wasRunning = !!existing && existing.status === "running";
+    const wasRunning = !!existing && existing.status;
 
     const bot = botManager.updateBrain(req.params.id, brain);
 

@@ -38,11 +38,10 @@ mouthManager.startAll({
     console.log("content:", message.content);
     console.log("channel:", message.channel.id);
 
-    // 1. Filtrage bots
     const candidates = botManager.listBots()
         .filter(b =>
             b.mouth === mouthId &&
-            b.status === "running" &&
+            b.status &&
             b.channelId === message.channel.id
         );
 
