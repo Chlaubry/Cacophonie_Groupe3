@@ -7,7 +7,7 @@
 
 /**
  * @openapi
- * /bots/{idUser}/getAllConv:
+ * /users/{idUser}/conv:
  *   get:
  *     tags: [Users]
  *     summary: Lister toutes les conversations d'un utilisateur.
