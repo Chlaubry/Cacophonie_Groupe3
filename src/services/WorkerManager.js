@@ -2,11 +2,16 @@ const { Worker } = require('worker_threads');
 const path = require('path');
 
 class WorkerManager {
-    constructor(botManager, mouthManager) {
-        this.workers = new Map();
-
-        this.botManager = botManager;
+    /**
+     * @param {import('./BotManager')}  botManager
+     * @param {import('./MouthManager')} mouthManager
+     * @param {import('./LogManager')}  logManager   - optionnel ; si absent, pas de logging
+     */
+    constructor(botManager, mouthManager, logManager = null) {
+        this.workers      = new Map();
+        this.botManager   = botManager;
         this.mouthManager = mouthManager;
+        this.logManager   = logManager;
     }
 
     start(bot) {
@@ -14,36 +19,48 @@ class WorkerManager {
 
         const worker = new Worker(workerScript, {
             workerData: {
-                id: bot.id,
-                name: bot.name,
-                brain: bot.brain,
-                mouth: bot.mouth,
+                id:        bot.id,
+                name:      bot.name,
+                brain:     bot.brain,
+                mouth:     bot.mouth,
                 channelId: bot.channelId
             }
         });
 
         console.log(`[WORKER START] ${bot.name}`);
-        console.log("brain:", bot.brain);
-        console.log("mouth:", bot.mouth);
+        console.log("brain:",   bot.brain);
+        console.log("mouth:",   bot.mouth);
         console.log("channel:", bot.channelId);
 
         worker.on('message', (data) => {
-            const bot = this.botManager.getBot(data.botId);
+            const currentBot = this.botManager.getBot(data.botId);
+            if (!currentBot) return;
 
-            if (!bot) return;
-
-            console.log("Envoi Discord...");
-            console.log("mouth:", bot.mouth);
-            console.log("channel:", bot.channelId);
+            console.log("\n=== RÉPONSE WORKER ===");
+            console.log("mouth:",    currentBot.mouth);
+            console.log("channel:",  currentBot.channelId);
+            console.log("userId:",   data.userId);
+            console.log("message:",  data.userMessage);
             console.log("response:", data.response);
 
+            // Logging JSON de l'échange
+            if (this.logManager) {
+                this.logManager.log({
+                    botId:       data.botId,
+                    mouthId:     currentBot.mouth,
+                    userId:      data.userId,
+                    userMessage: data.userMessage,
+                    botResponse: data.response
+                });
+            }
+            // Envoi de la réponse sur Discord
             this.mouthManager.send(
-                bot.mouth,
-                bot.channelId,
+                currentBot.mouth,
+                currentBot.channelId,
                 data.response
             );
-            console.log("\n=== RÉPONSE WORKER ===");
-            console.log(data);
+
+
         });
 
         worker.on('error', (err) => {
@@ -62,12 +79,10 @@ class WorkerManager {
 
     stop(botId) {
         const worker = this.workers.get(botId);
-
         if (!worker) return false;
 
         worker.terminate();
         this.workers.delete(botId);
-
         return true;
     }
 
