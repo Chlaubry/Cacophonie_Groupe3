@@ -198,7 +198,7 @@ router.get('/:id/get', botController.getBot);
  *                         type: string
  *                         example: running
  */
-router.get('/list', botController.listBots);
+router.get('/', botController.listBots);
 
 /**
  * @openapi
