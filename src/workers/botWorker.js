@@ -61,7 +61,8 @@ parentPort.on('message', async (msg) => {
     if (!text || !text.trim()) return;
 
     text = text
-        .replace(/<@!?&?\d+>/g, '') // users + roles
+        .replace(/<@[!&]?\d+>/g, '') 
+        .replace(/\s+/g, ' ')
         .trim();
 
     if (!text) return;

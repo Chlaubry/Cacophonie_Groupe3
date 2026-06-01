@@ -47,7 +47,7 @@ mouthManager.startAll({
     const candidates = botManager.listBots()
         .filter(b =>
             b.mouth === mouthId &&
-            b.status === "running" &&
+            b.status === true &&
             b.channelId === message.channel.id
         );
 
@@ -57,7 +57,7 @@ mouthManager.startAll({
     if (!bot) return;
 
     // Nettoyage message
-    const mentionRegex = new RegExp(`<@!?${message.client.user.id}>`, 'g');
+    const mentionRegex = /<@[!&]?\d+>/g;
     const cleaned = message.content.replace(mentionRegex, '').trim();
 
     if (!cleaned) return;
@@ -67,7 +67,13 @@ mouthManager.startAll({
         botManager.startBot(bot.id, workerManager);
     }
 
-    bot.worker.postMessage({
+    const worker = workerManager.get(bot.id);  // ← récupère depuis WorkerManager
+    if (!worker) {
+        console.log("Pas de worker trouvé pour", bot.id);
+        return;
+    }
+
+    worker.postMessage({
         text: cleaned,
         user: message.author.id   
     });
