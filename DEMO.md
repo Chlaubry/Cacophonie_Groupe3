@@ -58,7 +58,7 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
-#### DELETE ``/bots/{id}```Supprimer un bot
+#### DELETE ``/bots/{id}`` Supprimer un bot
 ```shell
 curl -X 'DELETE' \
   'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
@@ -95,6 +95,13 @@ curl -X 'PUT' \
 }'
 ```
 
+#### GET ``/bots/{id}/conv`` Récupérer toutes les conversations d'un bot.
+```shell
+curl -X 'GET' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/conv' \
+  -H 'accept: application/json'
+```
+
 #### DELETE ``/bots/{id}/conv`` Supprimer toutes les conversations d'un bot
 ```shell
 curl -X 'DELETE' \
@@ -102,7 +109,16 @@ curl -X 'DELETE' \
   -H 'accept: */*'
 ```
 
+#### GET ``/bots/{idBot}/{idUser}/conv`` Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
+```shell
+curl -X 'GET' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/1505842191740964865/conv' \
+  -H 'accept: application/json'
+```
+
 #### DELETE ``/bots/{idBot}/{idUser}/conv`` Supprimer toutes les conversations d'un bot pour un utilisateur donné.
 ```shell
-
+curl -X 'DELETE' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/1505842191740964865/conv' \
+  -H 'accept: */*'
 ```
