@@ -33,19 +33,76 @@ Vous pouvez ensuite accéder à la documentation OpenAPI/**Swagger** via le lien
 ### Users
 
 #### GET ``/users/{idUser}/conv`` Lister toutes les conversations d'un utilisateur.
+```shell
+
+```
 
 ### Bots
 
 #### POST ``/bots`` Créer un nouveau bot
+```shell
+curl -X 'POST' \
+  'http://localhost:3000/bots' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Bot humour",
+  "brain": "english"
+}'
+```
 
 #### GET ``/bots`` Lister tous les bots
+```shell
+curl -X 'GET' \
+  'http://localhost:3000/bots' \
+  -H 'accept: application/json'
+```
 
 #### DELETE ``/bots/{id}```Supprimer un bot
+```shell
+curl -X 'DELETE' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
+  -H 'accept: */*'
+```
 
 #### PATCH ``/bots/{id}`` Changer un attribut d'un bot
+```shell
+curl -X 'PATCH' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Bot humour",
+  "status": true
+}'
+```
 
 #### GET ``/bots/{id}`` Récupérer un bot par ID
+```shell
+curl -X 'GET' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
+  -H 'accept: application/json'
+```
 
 #### PUT ``/bots/{id}/brain`` Modifier le brain (moteur conversationnel)
+```shell
+curl -X 'PUT' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/brain' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "brain": "clients"
+}'
+```
 
 #### DELETE ``/bots/{id}/conv`` Supprimer toutes les conversations d'un bot
+```shell
+curl -X 'DELETE' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/conv' \
+  -H 'accept: */*'
+```
+
+#### DELETE ``/bots/{idBot}/{idUser}/conv`` Supprimer toutes les conversations d'un bot pour un utilisateur donné.
+```shell
+
+```
