@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2026-06-01T12:24:25.943Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "call me test",
+    "botResponse": "Test, I will call you that from now on."
+  },
+  {
+    "timestamp": "2026-06-01T12:26:16.881Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "call me truc",
+    "botResponse": "Truc, I will call you that from now on."
+  }
+]
