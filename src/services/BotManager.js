@@ -79,22 +79,23 @@ class BotManager {
     }
 
     updateBot(id, workerManager, name, status) {
-        const bot = this.bots.get(id);
+    const bot = this.bots.get(id);
+    if (!bot) return null;
 
-        console.log("Updating bot", { id, name, status });
-
-        if (status && status !== bot.status) {
-            if (status) {
-                this.startBot(id, workerManager);
-            } else {
-                this.stopBot(id, workerManager);
-            }
+    if (typeof status === "boolean" && status !== bot.status) {
+        if (status) {
+            this.startBot(id, workerManager);
+        } else {
+            this.stopBot(id, workerManager);
         }
-        if (name) {
-            bot.name = name;
-        }
-        return bot;
     }
+
+    if (name) {
+        bot.name = name;
+    }
+
+    return bot;
+}
 
     startBot(id, workerManager) {
         const bot = this.bots.get(id);
