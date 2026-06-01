@@ -1,3 +1,6 @@
+const path = require('path');
+const swaggerJsdoc = require('swagger-jsdoc');
+
 const swaggerOptions = {
     definition: {
         openapi: "3.0.0",
@@ -6,7 +9,7 @@ const swaggerOptions = {
             description: "API de gestion des bots"
         }
     },
-    apis: ["./src/api/routes/*.js"]
+    apis: [path.join(__dirname, '..', 'api', 'routes', '*.js')]
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
