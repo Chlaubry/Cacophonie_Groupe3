@@ -75,7 +75,10 @@ class LogManager {
         }
     }
 
-
+    getByUser(botId, userId) {
+        return this.getAll(botId)
+            .filter(entry => entry.userId === userId);
+    }
 
     /**
      * Supprime toutes les entrées d'un bot (remet le fichier à []).
