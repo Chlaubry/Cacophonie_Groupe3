@@ -54,5 +54,29 @@
     "userId": "699503971458482268",
     "userMessage": "how old are you",
     "botResponse": "I'm 5."
+  },
+  {
+    "timestamp": "2026-06-01T12:41:51.542Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5."
+  },
+  {
+    "timestamp": "2026-06-01T12:44:38.954Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "voici le lien https://github.com/Chlaubry/Cacophonie_Groupe3 normalement vous figurez bien parmi les collaborateurs",
+    "botResponse": "I'm not sure I understand you fully."
+  },
+  {
+    "timestamp": "2026-06-01T12:45:22.301Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "a",
+    "botResponse": "I'm not sure I understand you fully."
   }
 ]
