@@ -82,12 +82,11 @@ class LogManager {
    * @returns {Array}
    */
   getAllByUser(userId) {
-    const folderPath = this._filePath();
+    const folderPath = this.logDir;
     if (!fs.existsSync(folderPath)) return [];
     const conv = []
     fs.readdirSync(folderPath).forEach(file => {
       const filePath = path.join(folderPath, file);
-      console.log("filePath", filePath);
       try {
         const raw = fs.readFileSync(filePath, 'utf8');
         const entries = JSON.parse(raw);
