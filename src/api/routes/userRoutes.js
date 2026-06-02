@@ -42,13 +42,15 @@ const userController = require('../controllers/userController');
  *                     properties:
  *                       timestamp:
  *                         type: string
+ *                       botId:
+ *                         type: string
  *                       mouthId:
  *                         type: string
  *                       userId:
  *                         type: string
  *                       userMessage:
  *                         type: string
- *                       notResponse:
+ *                       botResponse:
  *                         type: string
  *       404:
  *         description: Conversations de l'utilisateur introuvables

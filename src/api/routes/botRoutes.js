@@ -209,7 +209,7 @@ router.get('/', botController.listBots);
  *                         type: string
  *                       userMessage:
  *                         type: string
- *                       notResponse:
+ *                       botResponse:
  *                         type: string
  *       404:
  *         description: Conversations du bot introuvables
@@ -276,7 +276,7 @@ router.delete('/:id/conv', botController.deleteAllConv);
  *                         type: string
  *                       userMessage:
  *                         type: string
- *                       notResponse:
+ *                       botResponse:
  *                         type: string
  *       404:
  *         description: Conversations du bot introuvables
