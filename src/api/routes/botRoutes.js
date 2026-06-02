@@ -287,25 +287,6 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{id}/conversations:
- *   delete:
- *     tags: [Bots]
- *     summary: Supprimer toutes les conversations d'un bot
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: Bot supprimé
- *       404:
- *         description: Bot introuvable
- */
-
-/**
- * @openapi
  * /bots/{idBot}/{idUser}/conversations:
  *   get:
  *     tags: [Bots]
@@ -352,21 +333,25 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{idBot}/{idUser}/conversations:
+ * /bots/{id}/conversations:
  *   delete:
  *     tags: [Bots]
- *     summary: Supprimer toutes les conversations d'un bot avec un utilisateur donnés.
+ *     summary: Supprimer toutes les conversations d'un bot, éventuellement uniquement avec un utilisateur donné
  *     parameters:
  *       - in: path
- *         name: idBot
+ *         name: id
  *         required: true
  *         schema:
  *           type: string
- *       - in: path
- *         name: idUser
- *         required: true
- *         schema:
- *           type: string
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               idUser:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Bot supprimé
