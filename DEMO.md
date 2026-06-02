@@ -28,20 +28,9 @@ npm start
 
 Vous pouvez ensuite accéder à la documentation OpenAPI/**Swagger** via le lien suivant: [http://localhost:3000/docs/](http://localhost:3000/docs/)
 
-## Trace des requêtes ``curl``
+## Trace des requêtes ``curl`` de la démonstration
 
-### Users
-
-#### GET ``/users/{idUser}/conv`` Lister toutes les conversations d'un utilisateur.
-```shell
-curl -X 'GET' \
-  'http://localhost:3000/users/1505842191740964865/conv' \
-  -H 'accept: application/json'
-```
-
-### Bots
-
-#### POST ``/bots`` Créer un nouveau bot
+### POST ``/bots`` Créer un nouveau bot
 ```shell
 curl -X 'POST' \
   'http://localhost:3000/bots' \
@@ -53,21 +42,14 @@ curl -X 'POST' \
 }'
 ```
 
-#### GET ``/bots`` Lister tous les bots
+### GET ``/bots`` Lister tous les bots
 ```shell
 curl -X 'GET' \
   'http://localhost:3000/bots' \
   -H 'accept: application/json'
 ```
 
-#### DELETE ``/bots/{id}`` Supprimer un bot
-```shell
-curl -X 'DELETE' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
-  -H 'accept: */*'
-```
-
-#### PATCH ``/bots/{id}`` Changer un attribut d'un bot
+### PATCH ``/bots/{id}`` Changer un attribut d'un bot
 ```shell
 curl -X 'PATCH' \
   'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
@@ -79,14 +61,21 @@ curl -X 'PATCH' \
 }'
 ```
 
-#### GET ``/bots/{id}`` Récupérer un bot par ID
+### GET ``/bots/{id}`` Récupérer un bot par ID
 ```shell
 curl -X 'GET' \
   'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
   -H 'accept: application/json'
 ```
 
-#### PUT ``/bots/{id}/brain`` Modifier le brain (moteur conversationnel)
+### GET ``/users/{idUser}/conv`` Lister toutes les conversations d'un utilisateur.
+```shell
+curl -X 'GET' \
+  'http://localhost:3000/users/1505842191740964865/conv' \
+  -H 'accept: application/json'
+```
+
+### PUT ``/bots/{id}/brain`` Modifier le brain (moteur conversationnel)
 ```shell
 curl -X 'PUT' \
   'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/brain' \
@@ -97,30 +86,37 @@ curl -X 'PUT' \
 }'
 ```
 
-#### GET ``/bots/{id}/conv`` Récupérer toutes les conversations d'un bot.
+### GET ``/bots/{id}/conv`` Récupérer toutes les conversations d'un bot.
 ```shell
 curl -X 'GET' \
   'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/conv' \
   -H 'accept: application/json'
 ```
 
-#### DELETE ``/bots/{id}/conv`` Supprimer toutes les conversations d'un bot
+### GET ``/bots/{idBot}/{idUser}/conv`` Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
+```shell
+curl -X 'GET' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/1505842191740964865/conv' \
+  -H 'accept: application/json'
+```
+
+### DELETE ``/bots/{idBot}/{idUser}/conv`` Supprimer toutes les conversations d'un bot pour un utilisateur donné.
+```shell
+curl -X 'DELETE' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/1505842191740964865/conv' \
+  -H 'accept: */*'
+```
+
+### DELETE ``/bots/{id}/conv`` Supprimer toutes les conversations d'un bot
 ```shell
 curl -X 'DELETE' \
   'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/conv' \
   -H 'accept: */*'
 ```
 
-#### GET ``/bots/{idBot}/{idUser}/conv`` Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
-```shell
-curl -X 'GET' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/1505842191740964865/conv' \
-  -H 'accept: application/json'
-```
-
-#### DELETE ``/bots/{idBot}/{idUser}/conv`` Supprimer toutes les conversations d'un bot pour un utilisateur donné.
+### DELETE ``/bots/{id}`` Supprimer un bot
 ```shell
 curl -X 'DELETE' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/1505842191740964865/conv' \
+  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
   -H 'accept: */*'
 ```
