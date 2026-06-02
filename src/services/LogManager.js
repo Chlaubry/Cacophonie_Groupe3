@@ -99,7 +99,6 @@ class LogManager {
       }
     });
 
-    console.log("conv", conv);
     return conv;
   }
 
