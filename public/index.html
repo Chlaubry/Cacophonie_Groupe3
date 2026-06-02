@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Cacaphonie</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <h1>Dashboard de Cacophonie</h1>
+    </header>
+
+    <main>
+        <section class="dashboard">
+            <div class="dashboard-header">
+                <h2>Liste des bots</h2>
+                <button id="refreshBtn" type="button">Rafraîchir</button>
+            </div>
+            <div id="statusMessage" class="status-message"></div>
+            <div class="table-wrapper">
+                <table id="botsTable">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Brain</th>
+                            <th>Mouth</th>
+                            <th>Channel ID</th>
+                            <th>Statut</th>
+                            <th>ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6">Chargement...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
