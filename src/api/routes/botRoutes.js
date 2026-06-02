@@ -371,6 +371,5 @@ router.put('/:id/brain', botController.updateBrain);
 router.get('/:id/conversations', botController.getAllConv);
 router.delete('/:id/conversations', botController.deleteAllConv);
 router.get('/:idBot/:idUser/conversations', botController.getAllConvByUser);
-router.delete('/:idBot/:idUser/conversations', botController.deleteAllConvByUser);
 
 module.exports = router;
