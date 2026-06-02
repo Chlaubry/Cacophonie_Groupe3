@@ -34,7 +34,9 @@ Vous pouvez ensuite accéder à la documentation OpenAPI/**Swagger** via le lien
 
 #### GET ``/users/{idUser}/conv`` Lister toutes les conversations d'un utilisateur.
 ```shell
-
+curl -X 'GET' \
+  'http://localhost:3000/users/1505842191740964865/conv' \
+  -H 'accept: application/json'
 ```
 
 ### Bots
