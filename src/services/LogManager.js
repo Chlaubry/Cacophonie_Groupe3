@@ -118,18 +118,17 @@ class LogManager {
     fs.writeFileSync(filePath, JSON.stringify([], null, 2), 'utf-8');
   }
 
-  /**
-   * Supprime toutes les entrées d'un bot pour un utilisateur donné.
-   *
-   * @param {string} botId
-   * @param {string} userId
-   */
-  deleteByUser(botId, userId) {
-    const remaining =
-        this.getAll(botId).filter(entry => entry.userId === userId);
+    /**
+     * Supprime toutes les entrées d'un bot pour un utilisateur donné.
+     *
+     * @param {string} botId
+     * @param {string} userId
+     */
+    deleteByUser(botId, userId) {
+    const remaining = this.getAll(botId).filter(entry => entry.userId !== userId);
     const filePath = this._filePath(botId);
-    fs.writeFileSync(filePath, JSON.stringify(remaining, null, 2), 'utf-8');
-  }
+    fs.writeFileSync(filePath,JSON.stringify(remaining, null, 2),'utf-8');
+}
 
 
   _filePath(botId) {
