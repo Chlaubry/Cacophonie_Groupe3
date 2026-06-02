@@ -1,3 +1,8 @@
+const express = require('express');
+const router = express.Router();
+
+const userController = require('../controllers/userController');
+
 /**
  * @openapi
  * tags:
@@ -10,11 +15,18 @@
  * /users/{idUser}/conv:
  *   get:
  *     tags: [Users]
- *     summary: Lister toutes les conversations d'un utilisateur.
- *     description: Retourne la liste de toutes les conversations enregistrées en mémoire d'un utilisateur donné.
+ *     summary: Récupérer toutes les conversations d'un utilisateur.
+ *     description: Retourne les conversations d'un utilisateur spécifique.
+ *     parameters:
+ *       - in: path
+ *         name: idUser
+ *         required: true
+ *         description: ID de l'utilisateur
+ *         schema:
+ *           type: string
  *     responses:
  *       200:
- *         description: Liste des conversations de l'utilisateur donné.
+ *         description: Liste des conversations d'un utilisateur donné
  *         content:
  *           application/json:
  *             schema:
@@ -28,14 +40,20 @@
  *                   items:
  *                     type: object
  *                     properties:
- *                       idBot:
+ *                       timestamp:
  *                         type: string
- *                       mouthBot:
+ *                       mouthId:
  *                         type: string
+ *                       userId:
+ *                         type: string
+ *                       userMessage:
+ *                         type: string
+ *                       notResponse:
+ *                         type: string
+ *       404:
+ *         description: Conversations de l'utilisateur introuvables
  */
 
-
-const express = require('express');
-const router = express.Router();
+router.get('/:idUser/conv', userController.getAllConv);
 
 module.exports = router;

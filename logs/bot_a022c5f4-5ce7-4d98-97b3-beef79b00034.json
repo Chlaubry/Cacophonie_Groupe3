@@ -1,0 +1,106 @@
+[
+  {
+    "timestamp": "2026-06-01T12:24:25.943Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "call me test",
+    "botResponse": "Test, I will call you that from now on."
+  },
+  {
+    "timestamp": "2026-06-01T12:26:16.881Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "call me truc",
+    "botResponse": "Truc, I will call you that from now on."
+  },
+  {
+    "timestamp": "2026-06-01T12:31:47.794Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5."
+  },
+  {
+    "timestamp": "2026-06-01T12:33:56.509Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "call me test",
+    "botResponse": "Test, I will call you that from now on."
+  },
+  {
+    "timestamp": "2026-06-01T12:36:27.182Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "call me test",
+    "botResponse": "Test, I will call you that from now on."
+  },
+  {
+    "timestamp": "2026-06-01T12:37:00.088Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "687947504242786355",
+    "userMessage": "Merci de me (re)donner l'invitation à votre GIT",
+    "botResponse": "I'm not sure I understand you fully."
+  },
+  {
+    "timestamp": "2026-06-01T12:39:33.678Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5."
+  },
+  {
+    "timestamp": "2026-06-01T12:41:51.542Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5."
+  },
+  {
+    "timestamp": "2026-06-01T12:44:38.954Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "699503971458482268",
+    "userMessage": "voici le lien https://github.com/Chlaubry/Cacophonie_Groupe3 normalement vous figurez bien parmi les collaborateurs",
+    "botResponse": "I'm not sure I understand you fully."
+  },
+  {
+    "timestamp": "2026-06-01T12:45:22.301Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "a",
+    "botResponse": "I'm not sure I understand you fully."
+  },
+  {
+    "timestamp": "2026-06-01T12:57:22.611Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "453235020702941204",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5 years old."
+  },
+  {
+    "timestamp": "2026-06-01T12:58:22.575Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5."
+  },
+  {
+    "timestamp": "2026-06-01T13:00:14.025Z",
+    "botId": "a022c5f4-5ce7-4d98-97b3-beef79b00034",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "a",
+    "botResponse": "That is interesting. Please continue."
+  }
+]
