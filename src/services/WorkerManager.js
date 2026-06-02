@@ -46,13 +46,13 @@ class WorkerManager {
             // Logging JSON de l'échange
             if (this.logManager) {
                 this.logManager.log({
-                    botId:       data.botId,
-                    mouthId:     currentBot.mouth,
-                    userId:      data.userId,
-                    userMessage: data.userMessage,
-                    botResponse: data.response
-                });
-            }
+                botId: data.botId,
+                mouthId: currentBot.mouth,
+                userId: data.userId, // ✔ doit être ID réel
+                userMessage: data.userMessage,
+                botResponse: data.response
+            });
+        }
             // Envoi de la réponse sur Discord
             this.mouthManager.send(
                 currentBot.mouth,

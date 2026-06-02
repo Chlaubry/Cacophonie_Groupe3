@@ -5,6 +5,7 @@ const path = require('path');
 
 const bot = new RiveScript();
 bot.setSubstitution("bot name", workerData.name);
+
 let isReady = false;
 const pending = [];
 
@@ -48,6 +49,7 @@ parentPort.on('message', async (msg) => {
     }
 
     let text = typeof msg === 'string' ? msg : msg?.text;
+
     const username =
         typeof msg === 'object' && msg?.user
             ? String(msg.user)
@@ -58,10 +60,13 @@ parentPort.on('message', async (msg) => {
             ? String(msg.userId)
             : "unknown";
 
+    const lastConversationDate =
+        typeof msg === 'object' ? msg?.lastConversationDate ?? null : null;
+
     if (!text || !text.trim()) return;
 
     text = text
-        .replace(/<@[!&]?\d+>/g, '') 
+        .replace(/<@[!&]?\d+>/g, '')
         .replace(/\s+/g, ' ')
         .trim();
 
@@ -69,14 +74,28 @@ parentPort.on('message', async (msg) => {
 
     console.log("Texte nettoyé:", text);
 
-    const response = await respond(username, text);
+    let response = await respond(username, text);
 
-    console.log(" Réponse RiveScript:", response);
+    // Ajout de la date de la dernière conversation à la fin du message
+    if (lastConversationDate) {
+        const dateFormatee = new Date(lastConversationDate).toLocaleString('fr-FR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        response = `${response} (dernière conversation : ${dateFormatee})`;
+    } else {
+        response = `${response} (on se parle pour la première fois)`;
+    }
+
+    console.log("Réponse RiveScript:", response);
 
     parentPort.postMessage({
         botId: workerData.id,
-        userId:      username,    
-        userMessage: text,        
+        userId: username,
+        userMessage: text,
         response
     });
 });
