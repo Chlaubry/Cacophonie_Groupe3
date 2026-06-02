@@ -126,6 +126,37 @@ td {
     color: var(--muted);
 }
 
+.bot-stats {
+    margin-top: 2rem;
+}
+
+.bot-stats-grid {
+    display: block;
+    margin-top: 1rem;
+}
+
+.bot-stat-section {
+    background: #f9fafb;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.bot-stat-section h4 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+}
+
+.bot-stat-section p {
+    margin: 0.35rem 0;
+    color: var(--text);
+}
+
+.bot-stat-section strong {
+    color: var(--text);
+}
+
 @media (max-width: 720px) {
     .dashboard-header {
         flex-direction: column;
