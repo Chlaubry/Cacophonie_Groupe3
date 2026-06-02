@@ -202,14 +202,14 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{id}/conv:
+ * /bots/{id}/conversations:
  *   get:
  *     tags: [Bots]
  *     summary: Lister toutes les conversations du bot en fonction si on le souhaite de l'id de l'utilisateur, de la date, etc.
  *     description: Retourne la liste de toutes les conversations enregistrées en mémoire du bot donné.
  *     responses:
  *       200:
- *         description: Liste des conv
+ *         description: Liste des conversations
  *         parameters:
  *              - in: query
  *                name: user 
@@ -243,7 +243,7 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{id}/conv:
+ * /bots/{id}/conversations:
  *   get:
  *     tags: [Bots]
  *     summary: Récupérer toutes les conversations d'un bot.
@@ -287,7 +287,7 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{id}/conv:
+ * /bots/{id}/conversations:
  *   delete:
  *     tags: [Bots]
  *     summary: Supprimer toutes les conversations d'un bot
@@ -306,7 +306,7 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{idBot}/{idUser}/conv:
+ * /bots/{idBot}/{idUser}/conversations:
  *   get:
  *     tags: [Bots]
  *     summary: Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
@@ -352,7 +352,7 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{idBot}/{idUser}/conv:
+ * /bots/{idBot}/{idUser}/conversations:
  *   delete:
  *     tags: [Bots]
  *     summary: Supprimer toutes les conversations d'un bot avec un utilisateur donnés.
@@ -383,9 +383,9 @@ router.get('/:id/', botController.getBot);
 router.put('/:id/brain', botController.updateBrain);
 
 //route pour les logs
-router.get('/:id/conv', botController.getAllConv);
-router.delete('/:id/conv', botController.deleteAllConv);
-router.get('/:idBot/:idUser/conv', botController.getAllConvByUser);
-router.delete('/:idBot/:idUser/conv', botController.deleteAllConvByUser);
+router.get('/:id/conversations', botController.getAllConv);
+router.delete('/:id/conversations', botController.deleteAllConv);
+router.get('/:idBot/:idUser/conversations', botController.getAllConvByUser);
+router.delete('/:idBot/:idUser/conversations', botController.deleteAllConvByUser);
 
 module.exports = router;
