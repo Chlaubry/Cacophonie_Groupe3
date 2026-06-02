@@ -23,7 +23,6 @@ function renderBots(bots) {
                 <td>${bot.name || ''}</td>
                 <td>${bot.brain || ''}</td>
                 <td>${bot.mouth || ''}</td>
-                <td>${bot.channelId || ''}</td>
                 <td class="status ${bot.status ? 'active' : 'inactive'}">${bot.status ? 'Actif' : 'Inactif'}</td>
                 <td>${bot.id || ''}</td>
             </tr>
