@@ -27,6 +27,31 @@ function renderBots(bots) {
     }).join('');
 }
 
+function getTopUserId(conversations) {
+    if (!Array.isArray(conversations) || conversations.length === 0) {
+        return null;
+    }
+
+    const counts = conversations.reduce((acc, item) => {
+        const userId = item.userId;
+        if (!userId) return acc;
+        acc[userId] = (acc[userId] || 0) + 1;
+        return acc;
+    }, {});
+
+    let topUserId = null;
+    let maxCount = 0;
+
+    for (const [userId, count] of Object.entries(counts)) {
+        if (count > maxCount) {
+            maxCount = count;
+            topUserId = userId;
+        }
+    }
+
+    return { userId: topUserId, count: maxCount };
+}
+
 function renderBotStats(statistics) {
     if (!Array.isArray(statistics) || statistics.length === 0) {
         botStatsGrid.innerHTML = '<p>Aucune statistique disponible.</p>';
@@ -38,6 +63,8 @@ function renderBotStats(statistics) {
             <section class="bot-stat-section">
                 <h4>${item.name || 'Bot inconnu'}</h4>
                 <p><strong>Conversations :</strong> <span>${item.count != null ? item.count : '—'}</span></p>
+                <p><strong>Utilisateur favoris :</strong> <span>${item.topUserId || '—'}</span></p>
+                <p><strong>Nombre de messages avec son utilisateur favoris :</strong> <span>${item.topUserCount != null ? item.topUserCount : '—'}</span></p>
             </section>
         `;
     }).join('');
@@ -55,12 +82,19 @@ async function loadBotStats(bots) {
         try {
             const response = await fetch(`/bots/${encodeURIComponent(bot.id)}/conv`);
             if (!response.ok) {
-                return { id: bot.id, name: bot.name, count: 'Erreur' };
+                return { id: bot.id, name: bot.name, count: 'Erreur', topUserId: '—', topUserCount: '—' };
             }
             const data = await response.json();
-            return { id: bot.id, name: bot.name, count: data.count };
+            const top = getTopUserId(data.conversations || []);
+            return {
+                id: bot.id,
+                name: bot.name,
+                count: data.count,
+                topUserId: top?.userId || '—',
+                topUserCount: top?.count != null ? top.count : '—'
+            };
         } catch (error) {
-            return { id: bot.id, name: bot.name, count: 'Erreur' };
+            return { id: bot.id, name: bot.name, count: 'Erreur', topUserId: '—', topUserCount: '—' };
         }
     }));
 
