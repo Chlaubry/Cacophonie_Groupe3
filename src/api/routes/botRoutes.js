@@ -7,7 +7,7 @@ const botController = require('../controllers/botController');
  * @openapi
  * tags:
  *   name: Bots
- *   description: Gestion du cycle de vie des bots (Cacophonie)
+ *   description: Gestion du cycle de vie des bots
  */
 
 /**
@@ -28,10 +28,10 @@ const botController = require('../controllers/botController');
  *             properties:
  *               name:
  *                 type: string
- *                 example: "Bot humour"
+ *                 example: "Nouveau Bot"
  *               brain:
  *                 type: string
- *                 description: Nom du fichier RiveScript (sans .rive) dans brains/rivescript
+ *                 description: Nom du fichier RiveScript (sans .rive) dans brains/rivescript qui correspond au cerveau associé au bot. 
  *                 example: "english"
  *     responses:
  *       201:
@@ -44,7 +44,7 @@ router.post('/', botController.createBot);
  * /bots/{id}:
  *   delete:
  *     tags: [Bots]
- *     summary: Supprimer un bot
+ *     summary: Supprimer un bot selon son id 
  *     parameters:
  *       - in: path
  *         name: id
@@ -64,7 +64,7 @@ router.delete('/:id', botController.deleteBot);
  * /bots/{id}:
  *   patch:
  *     tags: [Bots]
- *     summary: Changer un attribut d'un bot
+ *     summary: Changer un attribut (son status ou son nom) d'un bot selon son id
  *     parameters:
  *       - in: path
  *         name: id
@@ -80,7 +80,7 @@ router.delete('/:id', botController.deleteBot);
  *             properties:
  *               name:
  *                 type: string
- *                 example: "Bot humour"
+ *                 example: "Nom du bot changé"
  *               status:
  *                 type: boolean
  *                 example: true
@@ -97,7 +97,7 @@ router.patch('/:id', botController.updateBot);
  * /bots/{id}/brain:
  *   put:
  *     tags: [Bots]
- *     summary: Modifier le brain (moteur conversationnel)
+ *     summary: Modifier le brain du bot selon son id
  *     parameters:
  *       - in: path
  *         name: id
@@ -127,44 +127,6 @@ router.put('/:id/brain', botController.updateBrain);
 
 /**
  * @openapi
- * /bots/{id}:
- *   get:
- *     tags: [Bots]
- *     summary: Récupérer un bot par ID
- *     description: Retourne les informations d'un bot spécifique.
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         description: ID du bot
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: Bot trouvé
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: string
- *                 name:
- *                   type: string
- *                 brain:
- *                   type: string
- *                 mouth:
- *                   type: string
- *                 status:
- *                   type: string
- *                   example: running
- *       404:
- *         description: Bot introuvable
- */
-router.get('/:id/get', botController.getBot);
-
-/**
- * @openapi
  * /bots:
  *   get:
  *     tags: [Bots]
@@ -188,58 +150,25 @@ router.get('/:id/get', botController.getBot);
  *                     properties:
  *                       id:
  *                         type: string
+ *                         example: ee4e37f4-eeb6-4725-8128-d5b960d338ef
  *                       name:
  *                         type: string
+ *                         example: NomduBot
  *                       brain:
  *                         type: string
+ *                         example: english
  *                       mouth:
  *                         type: string
+ *                         example: 2526_INFO2_Caco_group3_bot1
+ *                       channelId:
+ *                         type: string
+ *                         example: 1505842191740964865
  *                       status:
- *                         type: string
- *                         example: running
+ *                         type: boolean
+ *                         example: false
  */
-router.get('/', botController.listBots);
 
-/**
- * @openapi
- * /bots/{id}/conversations:
- *   get:
- *     tags: [Bots]
- *     summary: Lister toutes les conversations du bot en fonction si on le souhaite de l'id de l'utilisateur, de la date, etc.
- *     description: Retourne la liste de toutes les conversations enregistrées en mémoire du bot donné.
- *     responses:
- *       200:
- *         description: Liste des conversations
- *         parameters:
- *              - in: query
- *                name: user 
- *                schema:
- *                  type: string
- *              description: Le pseudo de l'utilisateur
- *              - in: query
- *                name: datae 
- *                schema:
- *                  type: string
- *              description: La date 
- *        
- *          content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 count:
- *                   type: integer
- *                   example: 2
- *                 conversations:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       idBot:
- *                         type: string
- *                       mouthBot:
- *                         type: string
- */
+router.get('/', botController.listBots);
 
 /**
  * @openapi
@@ -279,19 +208,20 @@ router.get('/', botController.listBots);
  *                         type: string
  *                       userMessage:
  *                         type: string
- *                       notResponse:
+ *                       botResponse:
  *                         type: string
  *       404:
  *         description: Conversations du bot introuvables
  */
+router.get('/:id/conversations', botController.getAllConv);
 
 /**
  * @openapi
  * /bots/{idBot}/{idUser}/conversations:
  *   get:
  *     tags: [Bots]
- *     summary: Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
- *     description: Retourne les conversations d'un bot avec un utilisateur spécifiques.
+ *     summary: Récupérer toutes les conversations d'un bot avec un utilisateur donné.
+ *     description: Retourne les conversations d'un bot avec un utilisateur spécifique.
  *     parameters:
  *       - in: path
  *         name: idBot
@@ -325,11 +255,12 @@ router.get('/', botController.listBots);
  *                         type: string
  *                       userMessage:
  *                         type: string
- *                       notResponse:
+ *                       botResponse:
  *                         type: string
  *       404:
  *         description: Conversations du bot introuvables
  */
+router.get('/:idBot/:idUser/conversations', botController.getAllConvByUser);
 
 /**
  * @openapi
@@ -354,22 +285,12 @@ router.get('/', botController.listBots);
  *                 type: string
  *     responses:
  *       200:
- *         description: Bot supprimé
+ *         description: Conversations supprimées du bot et de l'utilisateur choisis
  *       404:
  *         description: Bot introuvable
  */
 
-
-router.post('/', botController.createBot);
-router.get('/list', botController.listBots);
-router.delete('/:id', botController.deleteBot);
-// router.patch('/:id/', botController.patchBot);
-router.get('/:id/', botController.getBot);
-router.put('/:id/brain', botController.updateBrain);
-
-//route pour les logs
-router.get('/:id/conversations', botController.getAllConv);
 router.delete('/:id/conversations', botController.deleteAllConv);
-router.get('/:idBot/:idUser/conversations', botController.getAllConvByUser);
+
 
 module.exports = router;

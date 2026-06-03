@@ -67,7 +67,7 @@ mouthManager.startAll({
         botManager.startBot(bot.id, workerManager);
     }
 
-    const worker = workerManager.get(bot.id);  // ← récupère depuis WorkerManager
+    const worker = workerManager.get(bot.id);  
     if (!worker) {
         console.log("Pas de worker trouvé pour", bot.id);
         return;

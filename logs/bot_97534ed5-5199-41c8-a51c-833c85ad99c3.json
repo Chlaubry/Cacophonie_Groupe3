@@ -1,0 +1,42 @@
+[
+  {
+    "timestamp": "2026-06-03T09:20:29.191Z",
+    "botId": "97534ed5-5199-41c8-a51c-833c85ad99c3",
+    "mouthId": "2526_INFO2_Caco_group3_bot3",
+    "userId": "699503971458482268",
+    "userMessage": "@ 2526_INFO2_Caco_group3_bot3 call me truc",
+    "botResponse": "Please go on."
+  },
+  {
+    "timestamp": "2026-06-03T09:20:51.541Z",
+    "botId": "97534ed5-5199-41c8-a51c-833c85ad99c3",
+    "mouthId": "2526_INFO2_Caco_group3_bot3",
+    "userId": "506909943232725025",
+    "userMessage": "a",
+    "botResponse": "I'm not sure I understand you fully."
+  },
+  {
+    "timestamp": "2026-06-03T09:21:01.695Z",
+    "botId": "97534ed5-5199-41c8-a51c-833c85ad99c3",
+    "mouthId": "2526_INFO2_Caco_group3_bot3",
+    "userId": "699503971458482268",
+    "userMessage": "call me truc",
+    "botResponse": "Truc, I will call you that from now on."
+  },
+  {
+    "timestamp": "2026-06-03T09:21:08.399Z",
+    "botId": "97534ed5-5199-41c8-a51c-833c85ad99c3",
+    "mouthId": "2526_INFO2_Caco_group3_bot3",
+    "userId": "699503971458482268",
+    "userMessage": "youpla",
+    "botResponse": "Please go on."
+  },
+  {
+    "timestamp": "2026-06-03T09:21:24.239Z",
+    "botId": "97534ed5-5199-41c8-a51c-833c85ad99c3",
+    "mouthId": "2526_INFO2_Caco_group3_bot3",
+    "userId": "699503971458482268",
+    "userMessage": "bidule",
+    "botResponse": "Does talking about this bother you?"
+  }
+]
