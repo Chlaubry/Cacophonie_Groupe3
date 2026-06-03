@@ -51,9 +51,9 @@ parentPort.on('message', async (msg) => {
     let text = typeof msg === 'string' ? msg : msg?.text;
 
     const username =
-        typeof msg === 'object' && msg?.user
-            ? String(msg.user)
-            : "user";
+    typeof msg === 'object' && msg?.userId
+        ? String(msg.userId)
+        : "user";
 
     const userId =
         typeof msg === 'object' && msg?.userId
