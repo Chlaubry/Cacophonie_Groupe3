@@ -6,6 +6,7 @@
     "discord.js": "^14.26.4",
     "dotenv": "^17.4.2",
     "rivescript": "^2.2.1",
+    "start": "^5.1.0",
     "swagger-jsdoc": "^6.3.0",
     "swagger-ui-express": "^5.0.1",
     "uuid": "^14.0.0"
