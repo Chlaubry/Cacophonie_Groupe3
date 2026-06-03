@@ -22,21 +22,34 @@ function deleteBot(req, res) {
 }
 
 function updateBot(req, res) {
-  const id = req.params.id;
-  const {name, status} = req.body;
+    const id = req.params.id;
+    const { name, status, mouth } = req.body;
 
-  console.log('Updating bot', id, name, status);
+    const botManager    = req.app.locals.botManager;
+    const workerManager = req.app.locals.workerManager;
 
-  const botManager = req.app.locals.botManager;
-  const workerManager = req.app.locals.workerManager;
+    const bot = botManager.updateBot(id, workerManager, name, status, mouth);
 
-  const bot = botManager.updateBot(id, workerManager, name, status);
+    if (!bot) {
+        return res.status(404).json({ error: 'Bot introuvable' });
+    }
 
-  if (!bot) {
-    return res.status(404).json({error: 'Bot introuvable'});
-  }
+    res.json(bot);
+}
 
-  res.json(bot);
+function updateBrain(req, res) {
+    const { brain } = req.body;
+
+    const botManager    = req.app.locals.botManager;
+    const workerManager = req.app.locals.workerManager;
+
+    const bot = botManager.updateBrain(req.params.id, brain, workerManager);
+
+    if (!bot) {
+        return res.status(404).json({ error: 'Bot introuvable' });
+    }
+
+    res.json(bot);
 }
 
 function updateBrain(req, res) {

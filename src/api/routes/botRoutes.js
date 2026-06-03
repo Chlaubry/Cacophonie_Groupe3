@@ -58,7 +58,6 @@ router.post('/', botController.createBot);
  *         description: Bot introuvable
  */
 router.delete('/:id', botController.deleteBot);
-
 /**
  * @openapi
  * /bots/{id}:
@@ -84,9 +83,28 @@ router.delete('/:id', botController.deleteBot);
  *               status:
  *                 type: boolean
  *                 example: true
+ *               mouth:
+ *                 type: string
+ *                 description: Identifiant de la bouche Discord à utiliser
+ *                 example: "2526_INFO2_Caco_group3_bot2"
  *     responses:
  *       200:
  *         description: Bot modifié
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: string
+ *                 name:
+ *                   type: string
+ *                 brain:
+ *                   type: string
+ *                 mouth:
+ *                   type: string
+ *                 status:
+ *                   type: boolean
  *       404:
  *         description: Bot introuvable
  */
