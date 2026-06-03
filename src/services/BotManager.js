@@ -49,7 +49,7 @@ class BotManager {
 
         if (bot.worker) {
             bot.worker.terminate();
-            bot.worker = null;
+            
         }
 
         // Si le bot tournait, il n'a plus de worker actif.
@@ -60,38 +60,46 @@ class BotManager {
         return bot;
     }
 
-    updateMouth(id, mouth) {
-        const bot = this.bots.get(id);
-        if (!bot) return null;
-
-        bot.mouth = mouth;
-
-        if (bot.worker) {
-            bot.worker.terminate();
-            bot.worker = null;
-        }
-
-        if (bot.status) {
-            bot.status = false;
-        }
-
-        return bot;
-    }
-
-    updateBot(id, workerManager, name, status) {
+    updateMouth(id, mouth, workerManager = null) {
     const bot = this.bots.get(id);
     if (!bot) return null;
 
+    bot.mouth = mouth;
+
+    if (bot.worker) {
+        bot.worker.terminate();
+        bot.worker = null;
+    }
+    bot.status = false;
+
+    // Redémarrage automatique sur la nouvelle bouche
+    if (workerManager) {
+        this.startBot(id, workerManager);
+    }
+
+    return bot;
+}
+
+updateBot(id, workerManager, name, status, mouth) {
+    const bot = this.bots.get(id);
+    if (!bot) return null;
+
+    if (name) {
+        bot.name = name;
+    }
+
+    // Changement de bouche → redémarre sur la nouvelle bouche
+    if (mouth && mouth !== bot.mouth) {
+        this.updateMouth(id, mouth, workerManager);
+    }
+
+    // Changement de status
     if (typeof status === "boolean" && status !== bot.status) {
         if (status) {
             this.startBot(id, workerManager);
         } else {
             this.stopBot(id, workerManager);
         }
-    }
-
-    if (name) {
-        bot.name = name;
     }
 
     return bot;
