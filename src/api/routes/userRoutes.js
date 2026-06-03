@@ -12,7 +12,7 @@ const userController = require('../controllers/userController');
 
 /**
  * @openapi
- * /users/{idUser}/conv:
+ * /users/{idUser}/conversations:
  *   get:
  *     tags: [Users]
  *     summary: Récupérer toutes les conversations d'un utilisateur.
@@ -42,18 +42,20 @@ const userController = require('../controllers/userController');
  *                     properties:
  *                       timestamp:
  *                         type: string
+ *                       botId:
+ *                         type: string
  *                       mouthId:
  *                         type: string
  *                       userId:
  *                         type: string
  *                       userMessage:
  *                         type: string
- *                       notResponse:
+ *                       botResponse:
  *                         type: string
  *       404:
  *         description: Conversations de l'utilisateur introuvables
  */
 
-router.get('/:idUser/conv', userController.getAllConv);
+router.get('/:idUser/conversations', userController.getAllConv);
 
 module.exports = router;

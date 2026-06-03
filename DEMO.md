@@ -28,6 +28,9 @@ npm start
 
 Vous pouvez ensuite accéder à la documentation OpenAPI/**Swagger** via le lien suivant: [http://localhost:3000/docs/](http://localhost:3000/docs/)
 
+Vous pouvez aussi accéder au dashboard via le lien suivant: [http://localhost:3000/](http://localhost:3000/)
+
+
 ## Trace des requêtes ``curl`` de la démonstration
 
 ### POST ``/bots`` Créer un nouveau bot

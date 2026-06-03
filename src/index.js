@@ -67,14 +67,22 @@ mouthManager.startAll({
         botManager.startBot(bot.id, workerManager);
     }
 
-    const worker = workerManager.get(bot.id);  // ← récupère depuis WorkerManager
+    const worker = workerManager.get(bot.id);  
     if (!worker) {
         console.log("Pas de worker trouvé pour", bot.id);
         return;
     }
 
+    const lastConv = logManager.getLastConversationDate(
+    bot.id,
+    message.author.id
+);
+
     worker.postMessage({
+        botId: bot.id,
         text: cleaned,
-        user: message.author.id   
+        userId: message.author.id,
+        lastConversationDate: lastConv
     });
 });
+
