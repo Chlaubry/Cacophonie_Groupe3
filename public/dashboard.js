@@ -80,7 +80,7 @@ async function loadBotStats(bots) {
 
     const stats = await Promise.all(bots.map(async bot => {
         try {
-            const response = await fetch(`/bots/${encodeURIComponent(bot.id)}/conv`);
+            const response = await fetch(`/bots/${encodeURIComponent(bot.id)}/conversations`);
             if (!response.ok) {
                 return { id: bot.id, name: bot.name, count: 'Erreur', topUserId: '—', topUserCount: '—' };
             }

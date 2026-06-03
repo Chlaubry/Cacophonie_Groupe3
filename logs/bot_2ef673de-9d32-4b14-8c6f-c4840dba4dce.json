@@ -1,0 +1,18 @@
+[
+  {
+    "timestamp": "2026-06-03T08:56:25.405Z",
+    "botId": "2ef673de-9d32-4b14-8c6f-c4840dba4dce",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "565183985052024842",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5 years old. (on se parle pour la première fois)"
+  },
+  {
+    "timestamp": "2026-06-03T08:56:36.868Z",
+    "botId": "2ef673de-9d32-4b14-8c6f-c4840dba4dce",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "565183985052024842",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5 years old. (dernière conversation : 03/06/2026 10:56)"
+  }
+]
