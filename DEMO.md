@@ -30,99 +30,145 @@ Vous pouvez ensuite accéder à la documentation OpenAPI/**Swagger** via le lien
 
 Vous pouvez aussi accéder au dashboard via le lien suivant: [http://localhost:3000/](http://localhost:3000/)
 
-## Trace des requêtes ``curl``
 
-### Users
+## Trace des requêtes ``curl`` de la démonstration
 
-#### GET ``/users/{idUser}/conv`` Lister toutes les conversations d'un utilisateur.
-```shell
-curl -X 'GET' \
-  'http://localhost:3000/users/1505842191740964865/conv' \
-  -H 'accept: application/json'
-```
-
-### Bots
-
-#### POST ``/bots`` Créer un nouveau bot
+### POST ``/bots`` Créer un nouveau bot
 ```shell
 curl -X 'POST' \
   'http://localhost:3000/bots' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
-  "name": "Bot humour",
+  "name": "Nouveau Bot",
   "brain": "english"
 }'
 ```
 
-#### GET ``/bots`` Lister tous les bots
+### GET ``/bots`` Lister tous les bots
 ```shell
 curl -X 'GET' \
   'http://localhost:3000/bots' \
   -H 'accept: application/json'
 ```
 
-#### DELETE ``/bots/{id}`` Supprimer un bot
-```shell
-curl -X 'DELETE' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
-  -H 'accept: */*'
-```
-
-#### PATCH ``/bots/{id}`` Changer un attribut d'un bot
+### PATCH ``/bots/{id}`` Changer un attribut d'un bot
 ```shell
 curl -X 'PATCH' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
-  -H 'accept: */*' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b' \
+  -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "name": "Bot humour",
-  "status": true
+  "name": "Nom du bot changé",
+  "status": true,
+  "mouth": "2526_INFO2_Caco_group3_bot1"
 }'
 ```
+Nous passons le status à true et nous changons le nom du bot.
 
-#### GET ``/bots/{id}`` Récupérer un bot par ID
+### PATCH ``/bots/{id}`` Changer un attribut d'un bot
 ```shell
-curl -X 'GET' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7' \
-  -H 'accept: application/json'
+curl -X 'PATCH' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Nom du bot changé",
+  "status": false,
+  "mouth": "2526_INFO2_Caco_group3_bot1"
+}'
 ```
+Nous passons le status à false.
 
-#### PUT ``/bots/{id}/brain`` Modifier le brain (moteur conversationnel)
+### PATCH ``/bots/{id}`` Changer un attribut d'un bot
+```shell
+curl -X 'PATCH' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Nom du bot changé",
+  "status": false,
+  "mouth": "2526_INFO2_Caco_group3_bot3"
+}'
+```
+Nous changons la bouche du bot et nous changons le status à false.
+
+### PUT ``/bots/{id}/brain`` Modifier le brain (moteur conversationnel)
 ```shell
 curl -X 'PUT' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/brain' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b/brain' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
   -d '{
   "brain": "clients"
 }'
 ```
+On change le cerveau du bot
 
-#### GET ``/bots/{id}/conv`` Récupérer toutes les conversations d'un bot.
+### PATCH ``/bots/{id}`` Changer un attribut d'un bot
+```shell
+curl -X 'PATCH' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Nom du bot changé",
+  "status": true,
+  "mouth": "2526_INFO2_Caco_group3_bot3"
+}'
+```
+Nous passons le status à true.
+
+### GET ``/users/{idUser}/conv`` Lister toutes les conversations d'un utilisateur.
 ```shell
 curl -X 'GET' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/conv' \
+  'http://localhost:3000/users/565183985052024842/conversations' \
   -H 'accept: application/json'
 ```
 
-#### DELETE ``/bots/{id}/conv`` Supprimer toutes les conversations d'un bot
-```shell
-curl -X 'DELETE' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/conv' \
-  -H 'accept: */*'
-```
-
-#### GET ``/bots/{idBot}/{idUser}/conv`` Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
+### GET ``/bots/{id}/conv`` Récupérer toutes les conversations d'un bot.
 ```shell
 curl -X 'GET' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/1505842191740964865/conv' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b/conversations' \
   -H 'accept: application/json'
 ```
 
-#### DELETE ``/bots/{idBot}/{idUser}/conv`` Supprimer toutes les conversations d'un bot pour un utilisateur donné.
+### GET ``/bots/{idBot}/{idUser}/conv`` Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
+```shell
+curl -X 'GET' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b/565183985052024842/conversations' \
+  -H 'accept: application/json'
+```
+
+### DELETE ``/bots/{id}/conv`` Supprimer toutes les conversations d'un bot
 ```shell
 curl -X 'DELETE' \
-  'http://localhost:3000/bots/37e94971-c2cd-4e06-92b5-ba096e44ffc7/1505842191740964865/conv' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b/conversations' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "idUser": "565183985052024842"
+}'
+```
+
+```shell
+curl -X 'DELETE' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b/conversations' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json'
+```
+
+### GET ``/bots/{idBot}/{idUser}/conv`` Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
+```shell
+curl -X 'GET' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b/565183985052024842/conversations' \
+  -H 'accept: application/json'
+```
+
+### DELETE ``/bots/{id}`` Supprimer un bot
+```shell
+curl -X 'DELETE' \
+  'http://localhost:3000/bots/4fe97138-be7c-45a8-9992-8c3042eab17b' \
   -H 'accept: */*'
 ```
