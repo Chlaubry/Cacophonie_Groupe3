@@ -48,7 +48,7 @@ class WorkerManager {
                 this.logManager.log({
                 botId: data.botId,
                 mouthId: currentBot.mouth,
-                userId: data.userId, // ✔ doit être ID réel
+                userId: data.userId,
                 userMessage: data.userMessage,
                 botResponse: data.response
             });

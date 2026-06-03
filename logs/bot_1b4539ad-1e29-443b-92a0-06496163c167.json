@@ -1,0 +1,74 @@
+[
+  {
+    "timestamp": "2026-06-03T08:46:13.028Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "565183985052024842",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5 years old. (on se parle pour la première fois)"
+  },
+  {
+    "timestamp": "2026-06-03T08:46:16.620Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "453235020702941204",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5 years old. (on se parle pour la première fois)"
+  },
+  {
+    "timestamp": "2026-06-03T08:46:27.577Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "453235020702941204",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5. (dernière conversation : 03/06/2026 10:46)"
+  },
+  {
+    "timestamp": "2026-06-03T08:46:31.672Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "565183985052024842",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5. (dernière conversation : 03/06/2026 10:46)"
+  },
+  {
+    "timestamp": "2026-06-03T08:46:59.829Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "453235020702941204",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5 years old. (dernière conversation : 03/06/2026 10:46)"
+  },
+  {
+    "timestamp": "2026-06-03T08:47:00.309Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "506909943232725025",
+    "botResponse": "Tell me more about that. (on se parle pour la première fois)"
+  },
+  {
+    "timestamp": "2026-06-03T08:47:15.811Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "a",
+    "botResponse": "Please go on. (dernière conversation : 03/06/2026 10:47)"
+  },
+  {
+    "timestamp": "2026-06-03T08:47:53.176Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "453235020702941204",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5 years old. (dernière conversation : 03/06/2026 10:46)"
+  },
+  {
+    "timestamp": "2026-06-03T08:48:00.872Z",
+    "botId": "1b4539ad-1e29-443b-92a0-06496163c167",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "453235020702941204",
+    "userMessage": "how old are you",
+    "botResponse": "I'm 5. (dernière conversation : 03/06/2026 10:47)"
+  }
+]
