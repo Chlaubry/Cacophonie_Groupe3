@@ -130,6 +130,21 @@ class LogManager {
 }
 
 
+  getLastConversationDate(botId, userId) {
+    const logs = this.getAll(botId);
+
+    const userLogs = logs.filter(
+        entry => entry.userId === userId
+    );
+
+    if (userLogs.length === 0) return null;
+
+    return userLogs
+        .sort((a, b) =>
+            new Date(b.timestamp) - new Date(a.timestamp)
+        )[0].timestamp;
+}
+
   _filePath(botId) {
     return path.join(this.logDir, `bot_${botId}.json`);
   }

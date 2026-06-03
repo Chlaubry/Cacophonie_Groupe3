@@ -28,7 +28,11 @@ class MouthManager {
             client.on('messageCreate', (message) => {
                 if (message.author.bot) return;
 
-                onMessage(id, message);
+            // Ne répondre que si ce client est mentionné (ou si personne n'est mentionné)
+            const isMentioned = message.mentions.users.has(client.user.id);
+            if (message.mentions.users.size > 0 && !isMentioned) return;
+
+            onMessage(id, message);
             });
 
             client.login(token);

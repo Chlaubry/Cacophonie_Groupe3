@@ -73,8 +73,16 @@ mouthManager.startAll({
         return;
     }
 
+    const lastConv = logManager.getLastConversationDate(
+    bot.id,
+    message.author.id
+);
+
     worker.postMessage({
+        botId: bot.id,
         text: cleaned,
-        user: message.author.id   
+        userId: message.author.id,
+        lastConversationDate: lastConv
     });
 });
+

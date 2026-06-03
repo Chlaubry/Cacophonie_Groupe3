@@ -1,0 +1,42 @@
+[
+  {
+    "timestamp": "2026-06-03T09:16:22.363Z",
+    "botId": "dc91663b-6ac2-4fdc-b6b6-2b2dc5b5ba24",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "call me truc",
+    "botResponse": "Truc, I will call you that from now on. (on se parle pour la première fois)"
+  },
+  {
+    "timestamp": "2026-06-03T09:16:26.101Z",
+    "botId": "dc91663b-6ac2-4fdc-b6b6-2b2dc5b5ba24",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "call me truc",
+    "botResponse": "Truc, I will call you that from now on. (dernière conversation : 03/06/2026 11:16)"
+  },
+  {
+    "timestamp": "2026-06-03T09:17:08.432Z",
+    "botId": "dc91663b-6ac2-4fdc-b6b6-2b2dc5b5ba24",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "call me truc",
+    "botResponse": "Truc, I will call you that from now on. (dernière conversation : 03/06/2026 11:16)"
+  },
+  {
+    "timestamp": "2026-06-03T09:18:37.017Z",
+    "botId": "dc91663b-6ac2-4fdc-b6b6-2b2dc5b5ba24",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "453235020702941204",
+    "userMessage": "call me truc",
+    "botResponse": "Truc, I will call you that from now on. (on se parle pour la première fois)"
+  },
+  {
+    "timestamp": "2026-06-03T09:18:41.924Z",
+    "botId": "dc91663b-6ac2-4fdc-b6b6-2b2dc5b5ba24",
+    "mouthId": "2526_INFO2_Caco_group3_bot1",
+    "userId": "506909943232725025",
+    "userMessage": "call me truc",
+    "botResponse": "Truc, I will call you that from now on. (dernière conversation : 03/06/2026 11:17)"
+  }
+]
