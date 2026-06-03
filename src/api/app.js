@@ -20,6 +20,8 @@ const swaggerSpec = swaggerJsdoc({
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+app.use(express.static(path.join(__dirname, '../../public')));
+
 console.log(swaggerSpec.paths);
 
 const botRoutes = require('./routes/botRoutes');

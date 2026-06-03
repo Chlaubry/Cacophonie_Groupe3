@@ -202,14 +202,14 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{id}/conv:
+ * /bots/{id}/conversations:
  *   get:
  *     tags: [Bots]
  *     summary: Lister toutes les conversations du bot en fonction si on le souhaite de l'id de l'utilisateur, de la date, etc.
  *     description: Retourne la liste de toutes les conversations enregistrées en mémoire du bot donné.
  *     responses:
  *       200:
- *         description: Liste des conv
+ *         description: Liste des conversations
  *         parameters:
  *              - in: query
  *                name: user 
@@ -243,7 +243,7 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{id}/conv:
+ * /bots/{id}/conversations:
  *   get:
  *     tags: [Bots]
  *     summary: Récupérer toutes les conversations d'un bot.
@@ -287,26 +287,7 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{id}/conv:
- *   delete:
- *     tags: [Bots]
- *     summary: Supprimer toutes les conversations d'un bot
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: Bot supprimé
- *       404:
- *         description: Bot introuvable
- */
-
-/**
- * @openapi
- * /bots/{idBot}/{idUser}/conv:
+ * /bots/{idBot}/{idUser}/conversations:
  *   get:
  *     tags: [Bots]
  *     summary: Récupérer toutes les conversations d'un bot avec un utilisateur donnés.
@@ -352,21 +333,25 @@ router.get('/', botController.listBots);
 
 /**
  * @openapi
- * /bots/{idBot}/{idUser}/conv:
+ * /bots/{id}/conversations:
  *   delete:
  *     tags: [Bots]
- *     summary: Supprimer toutes les conversations d'un bot avec un utilisateur donnés.
+ *     summary: Supprimer toutes les conversations d'un bot, éventuellement uniquement avec un utilisateur donné
  *     parameters:
  *       - in: path
- *         name: idBot
+ *         name: id
  *         required: true
  *         schema:
  *           type: string
- *       - in: path
- *         name: idUser
- *         required: true
- *         schema:
- *           type: string
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               idUser:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Bot supprimé
@@ -383,9 +368,8 @@ router.get('/:id/', botController.getBot);
 router.put('/:id/brain', botController.updateBrain);
 
 //route pour les logs
-router.get('/:id/conv', botController.getAllConv);
-router.delete('/:id/conv', botController.deleteAllConv);
-router.get('/:idBot/:idUser/conv', botController.getAllConvByUser);
-router.delete('/:idBot/:idUser/conv', botController.deleteAllConvByUser);
+router.get('/:id/conversations', botController.getAllConv);
+router.delete('/:id/conversations', botController.deleteAllConv);
+router.get('/:idBot/:idUser/conversations', botController.getAllConvByUser);
 
 module.exports = router;
